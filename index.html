@@ -387,7 +387,7 @@
         window.grid = {}
 
         //Set the amount of cells
-        const original_cells = 15
+        const original_cells = 25
 
         //Resize the maze on window resize
         window.onresize = updateGrid
@@ -402,7 +402,7 @@
             if (localStorage["lvl"] == undefined) localStorage.setItem("lvl", 1)
 
             //Set the amount of cells
-            window.cells = Number(localStorage.getItem("lvl")) + 14 || original_cells
+            window.cells = Number(localStorage.getItem("lvl")) + original_cells - 1 || original_cells
 
             //Where will the maze end
             window.end = {
@@ -811,7 +811,7 @@
             //Stop increasing the number of cells after level 200 (it takes too long, and after this point, I think it's virtually impossible to win)
             if (cells < 200 + original_cells - 1 && !tutorial && !custom) {
                 cells++;
-                localStorage.setItem("lvl", cells - 14)
+                localStorage.setItem("lvl", cells - (original_cells - 1))
             }
             if (!custom) end = {
                 x: cells - 1,
